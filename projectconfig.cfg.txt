@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% SU2 configuration file                                                       %
+% Case description: 2D study of a diverterless supersonic intake               %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ------------- DIRECT, ADJOINT, AND LINEARIZED PROBLEM DEFINITION ------------%
+%
+% Physical governing equations (EULER, NAVIER_STOKES,
+%                               WAVE_EQUATION, HEAT_EQUATION, FEM_ELASTICITY,
+%                               POISSON_EQUATION)
+SOLVER= RANS
+%
+% If Navier-Stokes, kind of turbulent model (NONE, SA)
+KIND_TURB_MODEL= SA
+%
+% Mathematical problem (DIRECT, CONTINUOUS_ADJOINT)
+MATH_PROBLEM= DIRECT
+%
+% Restart solution (NO, YES)
+RESTART_SOL= NO
+%
+
+% ----------- COMPRESSIBLE FREE-STREAM DEFINITION ----------%
+%
+% Mach number (non-dimensional, based on the free-stream values)
+MACH_NUMBER= 1.2
+%
+% Angle of attack (degrees)
+AOA= 0.0
+%
+% Side-slip angle (degrees)
+SIDESLIP_ANGLE= 0.0
+%
+% Free-stream temperature (288.15 K by default)
+FREESTREAM_TEMPERATURE= 288.15
+%
+% Free-stream pressure (101325.0 N/m^2 by default)  
+FREESTREAM_PRESSURE= 101325.0
+%
+% Reynolds number (non-dimensional, based on the free-stream values)
+REYNOLDS_NUMBER= 28100342.32
+%
+% Reynolds length (in meters)
+REYNOLDS_LENGTH= 1.0
+
+REF_DIMENSIONALIZATION= FREESTREAM_VEL_EQ_ONE	           % CHE COSA E'?
+%
+
+% ---------------------- REFERENCE VALUE DEFINITION ---------------------------%
+% DA FARE QUANDO SI CONOSCONO LE CARATTERISTICHE DELLA MESH
+% Reference origin for moment computation
+REF_ORIGIN_MOMENT_X = 0.25
+REF_ORIGIN_MOMENT_Y = 0.00
+REF_ORIGIN_MOMENT_Z = 0.00
+%
+% Reference length for pitching, rolling, and yawing non-dimensional moment
+REF_LENGTH= 1.0
+%
+% Reference area for force coefficients (0 implies automatic calculation)
+REF_AREA= 1.0
+
+% -------------------- BOUNDARY CONDITION DEFINITION --------------------------%
+% DA FARE QUANDO SI CONOSCONO LE CARATTERISTICHE DELLA MESH
+% Euler wall boundary marker(s) (NONE = no marker)
+MARKER_EULER= ( upper_wall, lower_wall )
+%
+% Inlet boundary type (TOTAL_CONDITIONS, MASS_FLOW)
+INLET_TYPE= TOTAL_CONDITIONS
+%
+% Inlet boundary marker(s) (NONE = no marker) 
+% Format: ( inlet marker, total temperature, total pressure, flow_direction_x, 
+%           flow_direction_y, flow_direction_z, ... ) where flow_direction is
+%           a unit vector.
+% Default: Mach ~ 0.1
+MARKER_INLET= ( inlet, 288.6, 102010.0, 1.0, 0.0, 0.0 )
+% Comment above line and uncomment next for  Mach ~ 0.7 (transonic)
+%MARKER_INLET= ( inlet, 316.224, 140513.23, 1.0, 0.0, 0.0 )
+%
+% Outlet boundary marker(s) (NONE = no marker)
+% Format: ( outlet marker, back pressure (static), ... )
+MARKER_OUTLET= ( outlet, 101300.0 )
+
+% ------------------------ SURFACES IDENTIFICATION ----------------------------%
+% DA FARE QUANDO SI CONOSCONO LE CARATTERISTICHE DELLA MESH
+% Marker(s) of the surface to be plotted or designed
+MARKER_PLOTTING= ( lower_wall )
+%
+% Marker(s) of the surface where the functional (Cd, Cl, etc.) will be evaluated
+MARKER_MONITORING= ( upper_wall, lower_wall )
+%
+
+% ------------- COMMON PARAMETERS DEFINING THE NUMERICAL METHOD ---------------%
+%
+% Numerical method for spatial gradients (GREEN_GAUSS, WEIGHTED_LEAST_SQUARES)
+% se la mesh non ha parti troppo skewed si può provare Green Gauss che dovrebbe
+% essere più veloce
+NUM_METHOD_GRAD= WEIGHTED_LEAST_SQUARES						
+%
+% Courant-Friedrichs-Lewy condition of the finest grid
+CFL_NUMBER= 10.0
+%
+% Adaptive CFL number (NO, YES)
+CFL_ADAPT= YES
+%
+% Parameters of the adaptive CFL number (factor down, factor up, CFL min value,
+%                                        CFL max value )
+CFL_ADAPT_PARAM= ( 0.1, 2.0, 50.0, 1e10 )
+%
+% Runge-Kutta alpha coefficients
+RK_ALPHA_COEFF= ( 0.66667, 0.66667, 1.000000 )
+%
+% Number of total iterations
+ITER= 999999
