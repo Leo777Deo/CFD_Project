@@ -1,3 +1,5 @@
+// se runnato dà Error : Unable to recover the edge 927 (2/2) on curve 57 (on surface 1) :c
+
 SetFactory('OpenCASCADE');
 SIZE_BL= 1e-05;
 THICK_BL= 0.048937072529785144;
