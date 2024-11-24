@@ -1,4 +1,4 @@
-// se runnato dà Error : Unable to recover the edge 927 (2/2) on curve 57 (on surface 1) :c
+// se runnato dà Error : Unable to recover the edge 927 (2/2) on curve 57 (on surface 1), però teoricamente il circle è scritto giusto :c
 
 SetFactory('OpenCASCADE');
 SIZE_BL= 1e-05;
