@@ -81,8 +81,6 @@ Line(54) = {53, 55};
 
 Circle(64) = {55, 57, 56};
 
-Line(65) = {52, 54};
-
 Point(58) = {3.994049790810803, 0, 0, h};
 Point(59) = {3.994049790810803, 30.742702576016093, 0, H};
 Point(60) = {-78.53981633974483, 30.742702576016093, 0, H};
@@ -115,7 +113,7 @@ Transfinite Line{62} = 150 Using Progression 1;
 Transfinite Line{63} = 150 Using Progression 1;
 
 Line Loop(1) = {1, 2, 63, 55, 56, 66, 57, 58, 67, 59, 60, 61, 62};
-Line Loop(2) = {51, 65, 52, 54, 64, 53};
+Line Loop(2) = {51, 57, 52, 54, 64, 53};
 
 Plane Surface(1) = {1,2};
 
@@ -124,7 +122,7 @@ Physical Surface('VOLUME') = {1};
 Physical Line('inlet') = {60, 61};
 Physical Line('lower wall') = {62, 1, 2, 63};
 Physical Line('upper wall') = {59};
-Physical Line('CONVERGENT') = {51, 65, 52, 54, 64, 53};
+Physical Line('CONVERGENT') = {51, 57, 52, 54, 64, 53};
 Physical Line('outlet') = {58, 67};
 Physical Line('ENGINE') = {55, 56, 66};
 
